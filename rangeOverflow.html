@@ -1,0 +1,43 @@
+<!--range overflow-->
+<!--<html>
+    <body>
+        <p> enter a number</p>
+        <input id="id1"type="number"max="100">
+        <button onclick="validation()">ok</button>
+        <p id="para"></p>
+        <script>
+            function validation(){
+                var txt="";
+                if(document.getElementById("id1").validity.rangeOverflow){
+                    txt="value too large";
+                }else{
+                    txt="input ok";
+                }
+                document.getElementById("para").innerHTML=txt;
+            }
+        </script>
+    </body>
+</html>
+-->
+<!--range underflow-->
+<html>
+    <body>
+        <p>enter a number</p>
+        <input id="id2"type="number"min="100">
+        <button onclick="myFunc()">ok</button>
+        <p>no. nono less than 100</p>
+        <p id="para"></p>
+        <script>
+            function myFunc(){
+                var txt="";
+                if(document.getElementById("id2").validity.rangeUnderflow){
+                    txt="input too small";
+                }else{
+                    txt="input valid";
+                }
+                document.getElementById("para").innerHTML=txt;
+
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <p>enter number</p>
+        <input id="id1"type="number"min="1"max="300"required>
+        <button onclick="myFunction()">OK</button>
+        <p>not less than 100 or greater than 300</p>
+        <p id="para"></p>
+        <script>
+            function myFunction(){
+                var inpObj=document.getElementById("id1");
+                if(!inpObj.checkValidity()){
+                    document.getElementById("para").innerHTML=inpObj.validationMessage;
+                    document.getElementById("para").innerHTML=willValidate;
+                }else{
+                    document.getElementById("para").innerHTML="input ok";
+                }
+            }
+        </script>
+    </body>
+</html>
