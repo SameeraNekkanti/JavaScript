@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/JavaScript">
+        function onFocusinput(input){
+            input.style.color="red";
+        }
+        function onBlurinput(input) {
+            input.style.color="green";
+            
+        }
+    </script>
+    <body>
+        click input field
+        <input type="text"onfocus="onFocusinput(this)"onblur="onBlurinput(this)"value="custom input field">
+    </body>
+</html>

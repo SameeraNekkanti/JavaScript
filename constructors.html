@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>user-defined objects</title>
+        <script type="text/JavaScript">
+        var book=new Object(); <!--or{subject:"c",author:"dennis"}-->
+        book.subject="c";
+        book.author="dennis"
+        </script>
+    </head>
+    <body>
+        <script>
+            document.write("book name is: "+book.subject+"<br>");
+            document.write("book author is: "+book.author+"<br>");
+        </script>
+    </body>
+</html>
+
+<hr>
+
+<html>
+    <head>
+        <script>
+            function book(title, author){
+                this.title=title;
+                this.author=author;
+            }
+        </script>
+    </head>
+    <body>
+        <script>
+            var myBook=new book("c","dennis");
+            document.write("book title is: "+myBook.title+"<br>");
+            document.write("book author: "+myBook.author+"<br>");
+        </script>
+    </body>
+</html>
+
+<hr>
+
+<html>
+    <head>
+        <script type="text/JavaScript">
+            function showValue(){
+                var val=Number.MAX_VALUE;
+                var min=Number.MIN_VALUE;
+                document.write("max: "+val+"<br>"+"min: "+min);
+
+
+          
+        </script>
+    </head>
+    <body>
+        <form>
+            <input type="button"value="click me"onclick="showValue()">
+        </form>
+    </body>
+</html>
+
+<html>
+    <head>
+        <script>
+            function shownan(){
+                var dayOfMonth=50;
+                if(dayOfMonth<1||dayOfMonth>31){
+                    dayOfMonth=Number.NaN
+                    alert("day of month must be btw 1 and 31");
+                }
+                document.write("value: "+dayOfMonth);
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+             <input type="button"value="click me"onclick="shownan()">
+        </form>
+    </body>
+</html>
+
+<hr>
+
+
