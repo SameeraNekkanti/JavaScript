@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Donor Registration
+        </title>
+        <script type="text/javascript">
+            function validateDate(){
+                var lastDate=document.donorForm.lastdate.value;
+                var gender=document.donorForm.gender.value;
+                
+                var lastDonation= new Date(lastDate);
+                var today=new Date();
+
+                var days=(today-lastDonation)/(1000*60*60*24);
+
+                if(gender=="Male"&&days<90){
+                    alert("Male must wait 90 days");
+                    return false;
+                }
+                if(gender=="Female" && days<120){
+                    alert("Female must wait 120 days");
+                    return false;
+                }
+                return true
+                
+
+            }
+            function validateNumber(){
+                var mobile=document.donorForm.mobile.value;
+                if(mobile.length!=10){
+                    alert("Enter valid 10-digit mobile number");
+                    return false;
+                }
+                return true;
+
+
+
+            }
+            function validateName(){
+                var name=document.donorForm.name.value;
+                
+                if(!isNaN(name)||name==""){
+                    alert("Name must contain only letters");
+                     return false;
+                }
+                 return true;
+            }
+                 function validateWeight(){
+                    var w=document.donorForm.weight.value;
+                    if(isNaN(w)||w<55){
+                        alert("must be 55+ to donate");
+                        return false;
+                    }
+                    return true;
+                 }
+                 function validateSleep(){
+                    var sleep=document.donorForm.sleep.value;
+                    if(sleep<8){
+                        alert("must sleep 8 or more hrs before donating.");
+                        return false;
+                    }
+                    return true;
+                 }
+                 function confirmSubmit(){
+    return confirm("Do you want to submit the form?");
+                 }
+                 function validateForm(){
+                    if(!validateName())return false;
+                     if(!validateNumber()) return false;
+            if(!validateWeight()) return false;
+            if(!validateSleep()) return false;
+            if(!validateDate()) return false;
+            if(!confirmSubmit()) return false;
+
+            alert("Registration Successful!");
+            return false;
+
+                 }
+            
+        </script>
+    </head>
+    <body onload="showMsg()">
+        <p id="msg"></p>
+        <script>
+            function showMsg(){
+                document.getElementById("msg").innerHTML="please fill all details carefully";
+            }
+        </script>
+        <h1>Donor Registration</h1>
+        <a href="BloodDonationSystem.html">Home Page
+        </a>
+        <form name="donorForm" onsubmit="return validateForm()">
+
+            <h2>Personal Information</h2>
+            Name: <input type="text"name="name"onblur="validateName()"onfocus="this.style.background='lightyellow'"><br><br>
+            Age: <input type="number" name="age" required><br><br>
+            Gender:
+            <select name="gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select><br><br>
+            Blood Group:
+            <select name="blood">
+                <option>A+</option><option>A-</option>
+                <option>B+</option><option>B-</option>
+                <option>O+</option><option>O-</option>
+                <option>AB+</option><option>AB-</option>
+            </select><br><br>
+
+            <h2>Health Information</h2>
+
+        Last Donation Date:
+        <input type="date" name="lastdate"><br><br>
+
+        Weight (kg):
+        <input type="number" name="weight" required><br><br>
+
+        Hours of Sleep:
+        <input type="number" name="sleep" required><br><br>
+
+        Mobile:
+        <input type="tel" name="mobile" onblur="validateNumber()"><br><br>
+
+        Email:
+        <input type="email" name="email" required><br><br>
+        <h3>Medical Conditions</h3>
+        <input type="checkbox"required> No chronic illness<br>
+        <input type="checkbox"required> No medication restrictions<br>
+        <input type="checkbox"required> No recent surgery<br><br>
+        <input type="submit" value="Register">
+        </form>
+        
+    </body>
+</html>
