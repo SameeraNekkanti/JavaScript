@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - ACM</title>
+    <script>
+        function validateFee(){
+            var country=document.acm.country.value;
+            if(country.toLowerCase()=="china"||country.toLowerCase()=="india"){
+                document.getElementById("fees").innerHTML = "Fees: $19";
+              
+
+            }else{
+                document.getElementById("fees").innerHTML = "Fees: $20";
+            }
+            return true;
+        }
+        function validateName(){
+            var name=document.acm.name.value;
+            if(name==""||!isNaN(name)){
+                alert("name must contain only letters");
+                return false;
+            }
+            return true;
+        }
+        function validateNumber(){
+            var num=document.acm.mobile.value;
+            if(num.length!=10||isNaN(num)){
+                alert("no. should be 10 digits")
+                return false;
+            }
+            return true;
+        }
+        function validateAge(){
+            var age=document.acm.age.value;
+            var birth=new Date(age).getFullYear();
+            var current=new Date().getFullYear();
+            var present=current-birth;
+            if(present<18){
+                alert("should be 18+");
+                return false;
+            }
+            return true;
+        }
+        function validateEmail(){
+            var email=document.acm.email.value;
+            var atpos=email.indexOf("@");
+           var  dotpos=email.indexOf(".");
+            if(atpos<1||(dotpos-atpos)<2){
+                 alert("pls enter valid email id")
+                 return false;
+            }
+            return true;
+        }
+        function validateForm(){
+            if(!validateAge())return false;
+            if(!validateEmail())return false;
+            
+            if(!validateName()) return false;
+            if(!validateNumber())return false;
+            validateFee();
+             return confirm("Are you sure you want to submit?");
+             <!--window.location.href="success.html"
+                return false;-->
+        }
+       
+       
+
+        
+    </script>
+    <style>
+        .container{
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Member Registration</h1>
+    <a href="ACM.html">home</a>
+    <div class="container">
+        <form name="acm"onsubmit="return validateForm()">
+         <h3>Personal Information</h3>
+    Name: <input type="text" name="name"onfocus="this.style.background='lightyellow'"onmouseout='validateName()'" required><br><br>
+    DOB: <input type="date"name="age"onfocus="this.style.background='lightyellow'"onmouseout='validateAge()'" required><br><br>
+
+    Gender:
+    <input type="radio" name="gender" required> Male
+    <input type="radio" name="gender"> Female
+    <br><br>
+
+    <h3>Contact Information</h3>
+    Country: <input type="text"name="country"onfocus="this.style.background='lightyellow'"onmouseout="validateFee()" required><br><br>
+    
+    <p id="fees"></p>
+    Mobile: <input type="text" name="mobile"onfocus="this.style.background='lightyellow'" required><br><br>
+    Email: <input type="email" name="email" onfocus="this.style.background='lightyellow'"required><br><br>
+
+    <h3>Degree</h3>
+    <input type="checkbox"> BE
+    <input type="checkbox"> BTech
+    <input type="checkbox"> ME
+    <input type="checkbox"> MTech
+    <input type="checkbox"> MSc
+    <input type="checkbox"> PhD
+    <br><br>
+
+    <button type="submit"value="submit">Submit</button>
+
+</form>
+</div>
+</body>
+</html>
