@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping Cart</title>
+        <style>
+            body{
+                font-family:Verdana, Geneva, Tahoma, sans-serif
+            }
+            .i{
+                color: rgb(11, 21, 30);
+                background-color: rgb(139, 176, 209);
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>items</h3>
+        <div class="i">item 1: 100$
+        <button onclick="addToCart('item1',100)">add</button>
+        </div>
+        <div class="i">item 2: 200$
+            <button onclick="addToCart('item2', 200)">add</button>
+        </div>
+        <div class="i">item 3: 300$
+            <button onclick="addToCart('item3', 300)">add</button>
+        </div>
+        <h4>
+            Shopping Cart
+        </h4>
+        <p id="cart"></p>
+
+        <h4>Total</h4>
+        <p id="total">0</p>
+
+        <script>
+            let total=0;
+            function addToCart(itemName, price){
+                document.getElementById("cart").innerHTML+="<li>"+itemName+"$"+price+"</li>";
+                total+=price;
+                document.getElementById("total").innerHTML=total;
+            }
+        </script>
+
+
+    </body>
+</html>
