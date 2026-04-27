@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>form</title>
+        <script>
+            function validateForm(){
+                
+                var name=document.myForm.name.value;
+                if(name==""||!isNaN(name)){
+                    alert("invalid name");
+                    return false;
+                
+            }
+            
+            var emailID=document.myForm.emailID.value;
+            var atpos=emailID.indexOf("@");
+            var dotpos=emailID.indexOf(".");
+            if(atpos<1 || (dotpos-atpos)<2){
+                alert("please enter valid email");
+                return false;
+            
+        }
+        
+            var password=document.myForm.password.value;
+            if(password.length<5){
+                alert("Password must be at least 5 characters")
+                return false;
+            }
+            var hasUpper=false;
+            var hasDigit=false;
+
+            for (var i=0; i<password.length;i++){
+                var ch=password[i];
+                if(ch>='A'&&ch<='Z'){
+                    hasUpper=true;
+                }
+
+                if(ch>='0' && ch<='9'){
+                    hasDigit=true;
+                }
+            }
+            if(!hasUpper||!hasDigit){
+                alert("Password must contain at least one uppercase letter and one digit");
+                return false;
+        }
+        var dob=document.myForm.date.value;
+        var year=new Date(dob).getFullYear();
+        var currentYear=new Date().getFullYear(); 
+        if(year<1900 || year> currentYear){
+            alert("invalid");
+            return false;
+        }
+        return true;
+    }
+    function countChars(){
+        
+            var text=document.myForm.comments.value;
+            document.getElementById("count").innerHTML=text.length+"/50";
+
+    }
+
+        </script>
+    </head>
+    <body>
+        <form name="myForm" onsubmit="return validateForm()">
+        Name: <input type="text"name="name"required>
+        <br><br>
+        Email: <input type="email"name="emailID"required>
+        <br><br>
+        Password: <input type="password" name="password"required>
+        <br><br>
+        Date of Birth: <input type="date"name="date"required>
+        <br><br>
+        Comments: <textarea name="comments"maxlength="50"oninput="countChars()"></textarea>
+        <span id="count">0/50</span><br><br>
+        <input type="submit"value="submit">
+
+
+        </form>  
+          </body>
+</html>
