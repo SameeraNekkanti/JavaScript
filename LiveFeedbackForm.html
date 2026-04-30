@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<script>
+    function validateName(){
+        var name=document.myForm.name.value;
+        if(name.length<3){
+            alert("form name should be min 3 characters long");
+        }
+    }
+    function showRating(){
+        var rating=document.getElementById("rating").value;
+        var txt="";
+        if(rating==5)txt="excellent";
+        else if(rating==3)txt="average";
+        else if(rating == "1") text = "Poor";
+
+        document.getElementById("ratingText").innerHTML = txt;
+    }
+    function countChars(){
+        var text=document.myForm.comments.value;
+        document.getElementById("charCount").innerHTML=text.length+" characters";
+    }
+    function submitForm(){
+    document.getElementById("message").innerHTML = "Feedback submitted";
+    }
+</script>
+    </head>
+    <body>
+        <form name="myForm">
+            Name: <input type="text"name="name"onblur=validateName()>
+            <br>
+            <br>
+            Rating:
+            <select id="rating"onchange="showRating()">
+                <option value="">Select</option>
+        <option value="5">5</option>
+        <option value="3">3</option>
+        <option value="1">1</option>
+            </select>
+            <span id="ratingText"></span>
+    <br><br>
+    Comments:
+    
+    <textarea name="comments" oninput="countChars()"></textarea>
+    <br><br>
+    <span id="charCount">0 characters</span>
+    <br><br>
+    <button type="button" onclick="submitForm()">Submit</button>
+    <p id="message"></p>
+        </form>
+    </body>
+</html>

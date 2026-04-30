@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <script type="text/JavaScript">
+            function onFocusinput(input){
+                input.style.color="red";
+                
+
+            }
+            function onBlurinput(input) {
+                input.style.color="green";
+                if(document.myForm.user.value==""){
+                    alert("username required");
+                }
+            }
+                function checkStrength(password) {
+                    let strengthx=document.getElementById("strengthx");
+                    let strength=0;
+
+                    if(password.length>6)strength++;
+                    if(/[A-Z]/.test(password))strength++;
+                     if (/[0-9]/.test(password)) strength++;
+
+                     if(password.length==0){
+                        strengthx.innerHTML="empty";
+                     }else if (strength <= 1) {
+                strengthx.innerHTML = "Weak";
+                strengthx.style.color = "red";
+                }else {
+                strengthx.innerHTML = "Strong";
+                strengthx.style.color = "green";
+            }
+        }
+            function checkEmpty(){
+                var text=document.myForm.user.value;
+                var pass=document.myForm.password.value;
+                if(text==""||pass==""){
+                    alert("error")
+                    return false;
+                }else{
+                    alert("login successful")
+                }
+                return true;
+                }
+                
+            
+            
+            
+        </script>
+    </head>
+    <body>
+        <form name="myForm">
+            Username: <input type="text"name="user"onfocus="onFocusinput(this)"onblur="onBlurinput(this)">
+            <br><br>
+            Password: <input type="password"name="password"oninput="checkStrength(this.value)">
+            <span id="strengthx"></span>
+            <br><br>
+            Login: <br>
+            <input type="button"onclick="checkEmpty()"value="login">
+
+        </form>
+    </body>
+</html>

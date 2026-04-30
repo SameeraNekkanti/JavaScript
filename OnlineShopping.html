@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+            function bigImg(mb){
+                mb.style.height="500px";
+                mb.style.width="500px";
+
+
+            }
+            function normalImg(x){
+            x.style.height="200px";
+            x.style.width="200px";
+            }
+            function cart(){
+            document.getElementById("msg").innerHTML = "Item added to cart";
+        }
+
+        function updateTotal(){
+            var qty=document.getElementById("qty").value;
+            let price=100;
+            let total=qty*price;
+            document.getElementById("total").innerHTML="total: "+total;
+        }
+        </script>
+        <img src="bob.png"border="0"alt="bob"width="200px"height="200px"onmouseover="bigImg(this)"onmouseout="normalImg(this)">
+        <br><br>
+        Quantity:  <input type="number"id="qty"min="1" value="1"
+           onchange="updateTotal()">
+        <input type="button"value="add to cart"onclick="cart()">
+        
+        <p id="total">Total Price: ₹100</p>
+
+        <p id="msg"></p>
+    </body>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
     <head>
         <title>form</title>
@@ -78,4 +78,145 @@
 
         </form>  
           </body>
+</html>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>form validation</title>
+
+    <style>
+        body {
+            font-family: 'Gill Sans', Calibri, sans-serif;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <script>
+        function validateForm(){
+            let valid = true;
+
+            // clear errors
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("emailError").innerText = "";
+            document.getElementById("passError").innerText = "";
+            document.getElementById("dobError").innerText = "";
+            document.getElementById("fileError").innerText = "";
+
+            // Name
+            var name = document.myForm.name.value;
+            if(name == "" || !isNaN(name)){
+                document.getElementById("nameError").innerText = "Invalid name";
+                valid = false;
+            }
+
+            // Email
+            var email = document.myForm.email.value;
+            var atpos = email.indexOf("@");
+            var dotpos = email.indexOf(".");
+            if(atpos < 1 || (dotpos - atpos) < 2){
+                document.getElementById("emailError").innerText = "Invalid email";
+                valid = false;
+            }
+
+            // Password
+            var password = document.myForm.password.value;
+            var hasUpper = false;
+            var hasDigit = false;
+
+            if(password.length < 4){
+                document.getElementById("passError").innerText = "Min 4 characters required";
+                valid = false;
+            } else {
+                for(var i=0; i<password.length; i++){
+                    var ch = password[i];
+                    if(ch >= 'A' && ch <= 'Z') hasUpper = true;
+                    if(ch >= '0' && ch <= '9') hasDigit = true;
+                }
+
+                if(!hasUpper || !hasDigit){
+                    document.getElementById("passError").innerText = "Must include uppercase & digit";
+                    valid = false;
+                }
+            }
+
+            // DOB
+            var dob = document.myForm.date.value;
+            var year = new Date(dob).getFullYear();
+            var currentYear = new Date().getFullYear();
+            if(year < 1900 || year > currentYear){
+                document.getElementById("dobError").innerText = "Invalid DOB";
+                valid = false;
+            }
+
+            // File
+            var file = document.myForm.file.files[0];
+            if(!file){
+                document.getElementById("fileError").innerText = "Upload a file";
+                valid = false;
+            } else if(file.type !== "image/jpeg"){
+                document.getElementById("fileError").innerText = "Only JPG allowed";
+                valid = false;
+            } else if(file.size > 10 * 1024 * 1024){
+                document.getElementById("fileError").innerText = "Max size 10MB";
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        function countChars(){
+            var text = document.myForm.name.value;
+            document.getElementById("count").innerText = text.length;
+        }
+    </script>
+</head>
+
+<body>
+
+<form name="myForm" onsubmit="return validateForm()">
+
+    Name:
+    <input type="text" name="name" oninput="countChars()" required>
+    <span id="nameError" class="error"></span>
+
+    <span id="count">0</span>
+    <br><br>
+
+    Email:
+    <input type="email" name="email" required>
+    <span id="emailError" class="error"></span>
+    <br><br>
+
+    Password:
+    <input type="password" name="password" required>
+    <span id="passError" class="error"></span>
+    <br><br>
+
+    DOB:
+    <input type="date" name="date" required>
+    <span id="dobError" class="error"></span>
+    <br><br>
+
+    File:
+    <input type="file" name="file" required>
+    <span id="fileError" class="error"></span>
+    <br><br>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+</body>
 </html>
