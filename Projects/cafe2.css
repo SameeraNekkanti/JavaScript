@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff8f0;
+}
+
+header {
+    background: rgb(99, 29, 19);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    margin: 15px;
+    text-decoration: none;
+}
+h1,h2{
+    text-align: center;
+}
+
+.hero {
+    height: 400px;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('rest.jpg');
+    background-size:contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+footer {
+            background: #6b3e26;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    background: orange;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}

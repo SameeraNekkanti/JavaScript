@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>BrewFresh | Order</title>
+    <style>
+        :root {
+            --primary: #6F4E37;
+            --accent: #ECB176;
+            --bg: #fcf8f5;
+            --text: #4a3425;
+            --glass: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            padding: 40px 20px;
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background: var(--glass);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(111, 78, 55, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h2 { 
+            text-align: center; 
+            color: var(--primary); 
+            margin-bottom: 5px; 
+            letter-spacing: 4px; 
+            text-transform: uppercase;
+        }
+
+        .quote { 
+            text-align: center; 
+            font-style: italic; 
+            font-size: 0.9rem; 
+            color: #A67B5B; 
+            margin-bottom: 30px; 
+        }
+
+        .input-group { margin-bottom: 15px; }
+        label { 
+            display: block; 
+            font-weight: bold; 
+            margin-bottom: 5px; 
+            font-size: 0.8rem; 
+            color: #8d6e63;
+            text-transform: uppercase;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid #eee;
+            border-radius: 12px;
+            box-sizing: border-box;
+            outline: none;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus { border-color: var(--accent); }
+
+        .order-row {
+            display: flex;
+            gap: 15px;
+            background: #fdfaf7;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            align-items: flex-end;
+        }
+
+        table { width: 100%; margin: 25px 0; border-collapse: collapse; }
+        th { text-align: left; padding: 10px; border-bottom: 2px solid var(--accent); color: var(--primary); }
+        td { padding: 15px 10px; border-bottom: 1px solid #f5f5f5; }
+
+        .total-section {
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            background: var(--primary);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .add-btn { background-color: var(--accent); color: white; height: 45px; width: 100px; }
+        .redirect-btn { background-color: var(--accent); color:white; height:45px; width:100px style="align-items:center"}
+        .submit-btn { background-color: var(--primary); color: white; width: 1000px; max-width: 100%; padding: 15px; font-size: 1rem; }
+        .remove-btn { 
+            background: #ffeded; 
+            color: #ff5e5e; 
+            padding: 4px 8px; 
+            font-size: 0.7rem; 
+            margin-left: 10px; 
+        }
+
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>BrewFresh</h2>
+    <div class="quote">"Where every sip tells a story and every crumb feels like home."
+        <br>
+        <br>
+        <div style="display: flex; justify-content: center; align-items: center;"><button class="redirect-btn" onclick="openMe()">Back to Home</button></div>
+    </div>
+    
+    <div class="input-group"><label>Full Name</label><input type="text" id="name"></div>
+    <div class="input-group"><label>Address</label><input type="text" id="addr"></div>
+    
+    <div style="display: flex; gap: 15px;">
+        <div class="input-group" style="flex: 1;"><label>Phone</label><input type="text" id="phone"></div>
+        <div class="input-group" style="flex: 1;"><label>Email</label><input type="email" id="email"></div>
+    </div>
+
+    <div class="order-row">
+        <div style="flex: 3;">
+            <label>Select Item</label>
+            <select id="menu">
+                <option value="0">Select from Menu</option>
+                <option value="40">Filter Coffee (₹40)</option>
+                <option value="90">Cold Coffee (₹90)</option>
+                <option value="120">Cappuccino (₹120)</option>3444
+                <option value="130">Caramel Coffee (₹130)</option>
+                <option value="140">KitKat Milkshake (₹140)</option>
+                <option value="80">Idly Sambar (₹80)</option>
+                <option value="70">French Fries (₹70)</option>
+                <option value="60">Maggi (₹60)</option>
+                <option value="100">Spring Rolls (₹100)</option>
+                <option value="90">Grilled Sandwich (₹90)</option>
+                <option value="120">Masala Dosa Combo (₹120)</option>
+                <option value="80">Adai (₹80)</option>
+                <option value="70">Ragi Halwa (₹70)</option>
+                <option value="110">Lava Cake (₹110)</option>
+                <option value="130">Brownie + Ice Cream (₹130)</option>
+            </select>
+        </div>
+        
+        <div style="flex: 1;">
+            <label>Qty</label>
+            <input type="number" id="qty" value="1" min="1" max="8">
+        </div>
+
+        <button class="add-btn" onclick="addToCart()">ADD</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="cartItems"></tbody>
+    </table>
+
+    <div class="total-section">Total: ₹<span id="finalTotal">0</span></div>
+
+    <div class="input-group">
+        <label>Special Instructions</label>
+        <textarea id="notes" rows="2"></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="placeOrder()">PLACE ORDER</button>
+</div>
+
+<script>
+let total = 0;
+
+function addToCart() {
+    let menu = document.getElementById("menu");
+    let price = parseInt(menu.value);
+    let itemName = menu.options[menu.selectedIndex].text.split('(')[0].trim()
+    let quantity = parseInt(document.getElementById("qty").value);
+
+    if (price === 0) {
+        alert("Please select an item");
+        return;
+    }
+
+    if (quantity <= 0 || isNaN(quantity)) {
+        alert("Enter valid quantity");
+        return;
+    }
+
+    let tableBody = document.getElementById("cartItems");
+    let rows = tableBody.getElementsByTagName("tr");
+    let found = false;
+
+    // Check if item already exists in the table
+    for (let i = 0; i < rows.length; i++) {
+        let existingItemName = rows[i].cells[0].innerText.split(' Remove')[0].trim();
+        
+        if (existingItemName === itemName) {
+            let qtyCell = rows[i].cells[1];
+            let priceCell = rows[i].cells[2];
+            
+            let currentQty = parseInt(qtyCell.innerText);
+            let newQty = currentQty + quantity;
+
+            if (newQty > 8) {
+                alert("Maximum 8 items allowed per product.");
+                return;
+            }
+
+            qtyCell.innerText = newQty;
+            priceCell.innerText = "₹" + (price * newQty);
+            total += (price * quantity);
+            found = true;
+            break;
+        }
+    }
+
+    // If not found, create a new row
+    if (!found) {
+        if (quantity > 8) {
+            alert("Maximum 8 items allowed per product.");
+            return;
+        }
+        let row = tableBody.insertRow();
+        let subtotal = price * quantity;
+        row.innerHTML = `<td>${itemName} <button class="remove-btn" onclick="removeRow(this)">Remove</button></td><td>${quantity}</td><td>₹${subtotal}</td>`;
+        total += subtotal;
+    }
+
+    document.getElementById("finalTotal").innerText = total;
+}
+
+function removeRow(btn) {
+    let row = btn.parentNode.parentNode;
+    let rowSubtotal = parseInt(row.cells[2].innerText.replace('₹', ''));
+    total -= rowSubtotal;
+    row.parentNode.removeChild(row);
+    document.getElementById("finalTotal").innerText = total;
+}
+
+function validateForm() {
+    let name = document.getElementById("name").value.trim();
+    let addr = document.getElementById("addr").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let email = document.getElementById("email").value.trim();
+
+    if (!name || !addr || total === 0) {
+        alert("Please fill in all details and add items to your cart.");
+        return false;
+    }
+
+    if (phone.length != 10 || isNaN(phone)) {
+        alert("Enter valid 10-digit phone number");
+        return false;
+    }
+
+    if (!email.includes("@") || !email.includes(".")) {
+        alert("Enter valid email");
+        return false;
+    }
+
+    return true;
+}
+
+function placeOrder() {
+    if (validateForm()) {
+        alert("Order placed successfully for " + document.getElementById("name").value);
+    }
+}
+function openMe() {
+    window.location.href = "cafe.html";
+}
+</script>
+
+</body>
+</html>

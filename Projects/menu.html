@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    
+    <link rel="stylesheet" href="menu.css">
+    <style>
+        
+    a {
+        display: block;
+        text-align: center;
+        color: white;
+    }
+
+    </style>
+</head>
+
+<body>
+<h1 class="title" style="color: darkorange;">Our Menu</h1>
+
+
+
+<div class="menu-container">
+
+  
+    <h2 class="section-title"style="color: darkorange;">Beverages</h2>
+
+    <div class="card">
+        <img src="filter.jpeg">
+        <h3>Filter Coffee</h3>
+        <p>Made with fresh coffee beans, every sip tastes like home</p>
+        <span>₹40</span>
+    </div>
+
+    <div class="card">
+        <img src="cold.jpeg">
+        <h3>Cold Coffee</h3>
+        <p>Chilled creamy coffee with ice</p>
+        <span>₹90</span>
+    </div>
+
+    <div class="card">
+        <img src="cap.jpeg">
+        <h3>Cappuccino</h3>
+        <p>Rich espresso with frothy milk</p>
+        <span>₹120</span>
+    </div>
+
+    <div class="card">
+        <img src="caramel.jpeg">
+        <h3>Caramel Coffee</h3>
+        <p>Sweet caramel flavored coffee</p>
+        <span>₹130</span>
+    </div>
+
+    <div class="card">
+        <img src="kitkat.jpeg">
+        <h3>KitKat Milkshake</h3>
+        <p>Chocolate shake with KitKat crunch</p>
+        <span>₹140</span>
+    </div>
+
+  
+    <h2 class="section-title"style="color: darkorange;">Snacks</h2>
+
+    <div class="card">
+        <img src="idly.jpg">
+        <h3>Idli Sambar</h3>
+        <p>Soft Idlies with fresh sambar</p>
+        <span>₹80</span>
+    </div>
+
+    <div class="card">
+        <img src="french.jpeg">
+        <h3>French Fries</h3>
+        <p>Golden crispy potato fries</p>
+        <span>₹70</span>
+    </div>
+
+    <div class="card">
+        <img src="maggie.jpeg">
+        <h3>Maggi</h3>
+        <p>Masala Maggi with café twist</p>
+        <span>₹60</span>
+    </div>
+
+    <div class="card">
+        <img src="spring.jpeg">
+        <h3>Spring Rolls</h3>
+        <p>Crunchy veg-filled rolls</p>
+        <span>₹100</span>
+    </div>
+
+    <div class="card">
+        <img src="sandwich.jpeg">
+        <h3>Grilled Sandwich</h3>
+        <p>Cheese-loaded toasted sandwich</p>
+        <span>₹90</span>
+    </div>
+
+    <div class="card">
+        <img src="dosa.jpg">
+        <h3>Masala Dosa Combo</h3>
+        <p>Dosa with sambar & idli</p>
+        <span>₹120</span>
+    </div>
+
+    <div class="card">
+        <img src="adai.jpeg">
+        <h3>Adai</h3>
+        <p>Protein-rich South Indian pancake</p>
+        <span>₹80</span>
+    </div>
+
+    <div class="card">
+        <img src="ragi.jpeg">
+        <h3>Ragi Halwa</h3>
+        <p>Healthy millet dessert</p>
+        <span>₹70</span>
+    </div>
+
+    <div class="card">
+        <img src="lava.jpeg">
+        <h3>Lava Cake</h3>
+        <p>Warm chocolate-filled cake</p>
+        <span>₹110</span>
+    </div>
+
+    <div class="card">
+        <img src="ice.jpeg">
+        <h3>Brownie + Ice Cream</h3>
+        <p>Hot brownie with cold scoop</p>
+        <span>₹130</span>
+    </div>
+
+</div>
+<br>
+<a href="cafe.html">Back to Home</a><br>
+
+<div class="order-section">
+  <button onclick="redirectMe()"> Order now! </button>
+<script type="text/javascript">
+     function redirectMe() {
+    window.location.href = 'order.html';
+}
+</script>
+<div class="scroll-container">
+
+
+<script>
+    const cards = document.querySelectorAll(".card");
+
+window.addEventListener("scroll", function () {
+
+    cards.forEach(function(card) {
+
+        let topPosition = card.getBoundingClientRect().top;
+
+        if(topPosition < 500){
+
+            card.style.scale = "1";
+
+        } else {
+
+            card.style.scale = "0.5";
+
+        }
+
+    })
+
+})
+</script>
+<script>
+
+let scrollAmount = 1;
+let direction = 1;
+
+setInterval(function () {
+
+    window.scrollBy(0, scrollAmount * direction);
+
+    if (
+        window.innerHeight + window.scrollY >= document.body.scrollHeight
+    ) {
+        direction = -1;
+    }
+
+    if (window.scrollY <= 0) {
+        direction = 1;
+    }
+
+}, 100);
+
+</script>
+
+  
+</div>
+
+
+
+</body>
+</html>

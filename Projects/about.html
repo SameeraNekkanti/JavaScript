@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>About Us - Brew Fresh South Indian Cafe</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fffaf5;
+            color: #333;
+        }
+
+        header {
+            background: #6b3e26;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5;
+        }
+
+        .about-section {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h2 {
+            color: #6b3e26;
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .reviews {
+            background: #f8eee7;
+            padding: 60px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .reviews h2 {
+            color: #6b3e26;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .review-slider {
+            width: 80%;
+            max-width: 700px;
+            margin: auto;
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .review-container {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .review-card {
+            min-width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .review-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .review-card h4 {
+            color: #6b3e26;
+        }
+
+        footer {
+            background: #6b3e26;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media(max-width: 768px) {
+            .about-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Brew Fresh South Indian Cafe</h1>
+        <p>Authentic Taste • Fresh Brews • Warm Ambience</p>
+        <br>
+        <a href="cafe.html">Home</a>
+    </header>
+
+    <section class="about-section">
+        <div class="about-img">
+            <img src="aboutx.jpg" alt="Cafe Image">
+        </div>
+
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>
+                Welcome to Brew Fresh South Indian Cafe, where tradition meets taste.
+                We serve freshly brewed filter coffee, authentic dosas, idlis,
+                uttapams, and delicious South Indian meals made with love.
+            </p>
+            <p>
+                Our mission is to bring the warmth of South Indian hospitality
+                and flavors to every customer. Whether you're here for breakfast,
+                lunch, or evening coffee, Brew Fresh offers a cozy atmosphere
+                perfect for family and friends.
+            </p>
+            <p>
+                Experience the aroma of freshly ground coffee beans and homemade
+                spices in every dish.
+            </p>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <h2>What Our Customers Say</h2>
+
+        <div class="review-slider">
+            <div class="review-container" id="slider">
+
+                <div class="review-card">
+                    <p>"Best filter coffee in town! The masala dosa was crispy and delicious."</p>
+                    <h4>- Sahithi N.</h4>
+                </div>
+
+                <div class="review-card">
+                    <p>"Loved the ambience and quick service. A must-visit for South Indian food lovers."</p>
+                    <h4>- Sahasra M.</h4>
+                </div>
+
+                <div class="review-card">
+                    <p>"Authentic taste just like home. Their idli and sambar are amazing!"</p>
+                    <h4>- Chaitra M.</h4>
+                </div>
+
+                <div class="review-card">
+                    <p>"Great place to relax with friends over coffee and snacks."</p>
+                    <h4>- Varsha O.</h4>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Brew Fresh South Indian Cafe | Freshly Brewed Happiness</p>
+    </footer>
+
+    <script>
+        let slider = document.getElementById("slider");
+        let index = 0;
+        let totalSlides = document.querySelectorAll(".review-card").length;
+
+        function autoSlide() {
+            index++;
+            if (index >= totalSlides) {
+                index = 0;
+            }
+            slider.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        setInterval(autoSlide, 3000); 
+    </script>
+
+</body>
+</html>
