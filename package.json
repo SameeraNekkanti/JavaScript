@@ -1,0 +1,26 @@
+{
+  "name": "brewfresh",
+ 
+  "version": "1.0.0",
+  "description": "My desktop app",
+  "main": "main.js",
+  "author": "Sam",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.myapp.desktop",
+    "productName": "Brew Fresh",
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "devDependencies": {
+    "electron": "^latest",
+    "electron-builder": "^latest"
+  }
+}
