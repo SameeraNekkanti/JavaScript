@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Job application form
+        </title>
+        <style>
+            body{
+                font-family: 'Courier New', Courier, monospace;
+                background-color: aliceblue;
+                padding: 12px;
+            }
+            h1{
+                text-align: center;
+            }
+            input:valid{
+                border:2px solid green;
+            }
+            input:invalid{
+border: 2px solid red;
+            }
+            input:disabled{
+                background-color: beige;
+                border:2px solid black
+            }
+        </style>
+        <script type="text/javascript">
+            function validateForm(){
+            
+            var name=document.getElementById("name").value;
+                if(name==""||!isNaN(name)){
+                    alert("Name must contain only letters")
+                    return false;
+                }
+            
+        
+            
+            var email=document.getElementById("mail").value;
+            var atpos=email.indexOf("@");
+            var dotpos=email.indexOf(".");
+
+            if(atpos<1 || (dotpos-atpos)<2){
+                alert("Invalid email format");
+                return false;  
+            }
+            var num=document.getElementById("mob").value;
+
+            if(num.length!=10){
+                alert("Enter a valid 10-digit mobile number");
+                return false;
+            }
+
+            var dob=document.getElementById("dob").value;
+            var year=new Date(dob).getFullYear();
+            var currentYear=new Date().getFullYear();
+
+            var age=currentYear-year;
+            document.getElementById("old").innerHTML="your age is: "+age;
+            if(age<21 || age>60){
+                    alert("Age must be between 21 and 60");
+                    return false;
+            }
+
+            var experience=document.getElementById("experience").value;
+            if(experience<0 ||(age<25 && experience>3)){
+                alert("Experience not valid for given age");
+                return false;
+
+            }
+            if(experience<2){
+                document.getElementById("exp").innerHTML="fresher salary range applies";
+
+
+            }else{
+                document.getElementById("exp").innerHTML="eligible for higher salary";
+            }
+
+            var salary=document.getElementById("salary").value;
+            if(salary<20000 || salary>100000){
+                alert("Salary must be between 20000 and 100000");
+                return false;
+            }
+
+            var skills=document.getElementsByName("skills");
+            var checked=false;
+
+            for(var i=0; i<skills.length;i++){
+                if(skills[i].checked){
+                    checked=true;
+                }
+            }
+            if(!checked
+            ){
+                alert("select atleast one skill");
+                return false;
+            }
+
+            var resume=document.getElementById("resume").value;
+
+            if(!resume.endsWith(".pdf")){
+                alert("only PDF allowed");
+                return false;
+            }
+
+            var linkedin=document.getElementById("linkedin").value;
+
+             var linkedinPattern=/^(https?:\/\/)?(www\.)?linkedin\.com\/.*$/i;
+
+            if (!linkedinPattern.test(linkedin)) {
+                alert("Enter a valid LinkedIn URL");
+                return false;
+}
+alert("form submitted successfully!");
+return true;
+            }
+
+
+            </script>
+    </head>
+    <body>
+        <h1>Job Application</h1>
+        <form name="myForm"onsubmit="return validateForm()">
+            FULL NAME: <input type="text"id="name"placeholder="enter name"required>
+            <br><br>
+            EMAIL: <input type="email"id="mail"placeholder="enter email"required>
+            <br><br>
+            MOBILE NUMBER:
+            <input type="tel" id="mob"required>
+            <br><br>
+
+            Date of Birth
+             <input type="date" id="dob" required>
+             <br>
+             <p id="old">you are age is: </p><br>
+
+            Experience (years)
+            <input type="number" id="experience" required>
+            <br><br>
+
+            EXPECTED SALARY
+            <input type="number" id="salary">
+            <br>
+            
+            <p id="exp"></p><br>
+
+            Skills
+            <input type="checkbox"name="skills"value="HTML">HTML
+            <input type="checkbox"name="skills"value="CSS">CSS
+             <input type="checkbox" name="skills" value="JS"> JS
+            <input type="checkbox" name="skills" value="Python"> Python
+            <br><br>
+
+            Upload File
+            <input type="file"id="resume"required>
+            <br><br>
+
+            LinkedIn URL
+             <input type="url" id="linkedin">
+            <br><br>
+
+            <input type="submit">
+
+        
+        </form>
+    </body>
+</html>
